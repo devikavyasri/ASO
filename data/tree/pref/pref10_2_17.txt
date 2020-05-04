@@ -1,0 +1,259 @@
+#const maxNumOfOpts = 2.
+degrees(0..maxNumOfOpts).
+
+%rule 1.
+body(1).
+option(1,1):-answer(9).
+option(1,2):-negAnswer(9).
+%rule 2.
+body(2):-answer(9).
+option(2,1):-negAnswer(4).
+option(2,2):-answer(4).
+%rule 3.
+body(3):-negAnswer(4),answer(9).
+option(3,1):-answer(3).
+option(3,2):-negAnswer(3).
+%rule 4.
+body(4):-answer(4),answer(9).
+option(4,1):-negAnswer(3).
+option(4,2):-answer(3).
+%rule 5.
+body(5):-negAnswer(3),answer(9).
+option(5,1):-negAnswer(8).
+option(5,2):-answer(8).
+%rule 6.
+body(6):-answer(3),answer(9).
+option(6,1):-negAnswer(8).
+option(6,2):-answer(8).
+%rule 7.
+body(7):-answer(9).
+option(7,1):-negAnswer(6).
+option(7,2):-answer(6).
+%rule 8.
+body(8):-negAnswer(4),answer(9).
+option(8,1):-answer(7).
+option(8,2):-negAnswer(7).
+%rule 9.
+body(9):-answer(4),answer(9).
+option(9,1):-negAnswer(7).
+option(9,2):-answer(7).
+%rule 10.
+body(10):-negAnswer(6),answer(9).
+option(10,1):-answer(5).
+option(10,2):-negAnswer(5).
+%rule 11.
+body(11):-answer(6),answer(9).
+option(11,1):-answer(5).
+option(11,2):-negAnswer(5).
+%rule 12.
+body(12):-negAnswer(4),answer(9).
+option(12,1):-negAnswer(10).
+option(12,2):-answer(10).
+%rule 13.
+body(13):-answer(4),answer(9).
+option(13,1):-answer(10).
+option(13,2):-negAnswer(10).
+%rule 14.
+body(14):-negAnswer(3),answer(9).
+option(14,1):-negAnswer(1).
+option(14,2):-answer(1).
+%rule 15.
+body(15):-answer(3),answer(9).
+option(15,1):-answer(1).
+option(15,2):-negAnswer(1).
+%rule 16.
+body(16):-negAnswer(4),answer(9).
+option(16,1):-negAnswer(2).
+option(16,2):-answer(2).
+%rule 17.
+body(17):-answer(4),answer(9).
+option(17,1):-answer(2).
+option(17,2):-negAnswer(2).
+%rule 18.
+body(18):-negAnswer(9).
+option(18,1):-answer(1).
+option(18,2):-negAnswer(1).
+%rule 19.
+body(19):-negAnswer(9).
+option(19,1):-answer(7).
+option(19,2):-negAnswer(7).
+%rule 20.
+body(20):-negAnswer(7),negAnswer(9).
+option(20,1):-answer(5).
+option(20,2):-negAnswer(5).
+%rule 21.
+body(21):-answer(7),negAnswer(9).
+option(21,1):-answer(5).
+option(21,2):-negAnswer(5).
+%rule 22.
+body(22):-negAnswer(5),negAnswer(9).
+option(22,1):-negAnswer(6).
+option(22,2):-answer(6).
+%rule 23.
+body(23):-answer(5),negAnswer(9).
+option(23,1):-negAnswer(6).
+option(23,2):-answer(6).
+%rule 24.
+body(24):-negAnswer(1),negAnswer(9).
+option(24,1):-negAnswer(3).
+option(24,2):-answer(3).
+%rule 25.
+body(25):-answer(1),negAnswer(9).
+option(25,1):-negAnswer(3).
+option(25,2):-answer(3).
+%rule 26.
+body(26):-negAnswer(1),negAnswer(9).
+option(26,1):-negAnswer(4).
+option(26,2):-answer(4).
+%rule 27.
+body(27):-answer(1),negAnswer(9).
+option(27,1):-negAnswer(4).
+option(27,2):-answer(4).
+%rule 28.
+body(28):-negAnswer(1),negAnswer(9).
+option(28,1):-answer(10).
+option(28,2):-negAnswer(10).
+%rule 29.
+body(29):-answer(1),negAnswer(9).
+option(29,1):-answer(10).
+option(29,2):-negAnswer(10).
+%rule 30.
+body(30):-negAnswer(1),negAnswer(9).
+option(30,1):-negAnswer(2).
+option(30,2):-answer(2).
+%rule 31.
+body(31):-answer(1),negAnswer(9).
+option(31,1):-answer(2).
+option(31,2):-negAnswer(2).
+%rule 32.
+body(32):-negAnswer(6),negAnswer(9).
+option(32,1):-negAnswer(8).
+option(32,2):-answer(8).
+%rule 33.
+body(33):-answer(6),negAnswer(9).
+option(33,1):-negAnswer(8).
+option(33,2):-answer(8).
+%rule 34.
+body(34).
+option(34,1):-negAnswer(6).
+option(34,2):-answer(6).
+%rule 35.
+body(35).
+option(35,1):-negAnswer(3).
+option(35,2):-answer(3).
+%rule 36.
+body(36):-negAnswer(6).
+option(36,1):-negAnswer(1).
+option(36,2):-answer(1).
+%rule 37.
+body(37):-answer(6).
+option(37,1):-negAnswer(1).
+option(37,2):-answer(1).
+%rule 38.
+body(38):-negAnswer(1).
+option(38,1):-answer(7).
+option(38,2):-negAnswer(7).
+%rule 39.
+body(39):-answer(1).
+option(39,1):-answer(7).
+option(39,2):-negAnswer(7).
+%rule 40.
+body(40):-negAnswer(6).
+option(40,1):-answer(8).
+option(40,2):-negAnswer(8).
+%rule 41.
+body(41):-answer(6).
+option(41,1):-answer(8).
+option(41,2):-negAnswer(8).
+%rule 42.
+body(42):-negAnswer(1).
+option(42,1):-negAnswer(5).
+option(42,2):-answer(5).
+%rule 43.
+body(43):-answer(1).
+option(43,1):-answer(5).
+option(43,2):-negAnswer(5).
+%rule 44.
+body(44):-negAnswer(6).
+option(44,1):-negAnswer(2).
+option(44,2):-answer(2).
+%rule 45.
+body(45):-answer(6).
+option(45,1):-negAnswer(2).
+option(45,2):-answer(2).
+%rule 46.
+body(46):-negAnswer(6).
+option(46,1):-negAnswer(10).
+option(46,2):-answer(10).
+%rule 47.
+body(47):-answer(6).
+option(47,1):-answer(10).
+option(47,2):-negAnswer(10).
+%rule 48.
+body(48):-negAnswer(1).
+option(48,1):-negAnswer(9).
+option(48,2):-answer(9).
+%rule 49.
+body(49):-answer(1).
+option(49,1):-answer(9).
+option(49,2):-negAnswer(9).
+%rule 50.
+body(50):-negAnswer(1).
+option(50,1):-negAnswer(4).
+option(50,2):-answer(4).
+%rule 51.
+body(51):-answer(1).
+option(51,1):-answer(4).
+option(51,2):-negAnswer(4).
+rank(1,1).
+rank(2,2).
+rank(3,3).
+rank(4,3).
+rank(5,4).
+rank(6,4).
+rank(7,5).
+rank(8,6).
+rank(9,6).
+rank(10,7).
+rank(11,7).
+rank(12,8).
+rank(13,8).
+rank(14,9).
+rank(15,9).
+rank(16,10).
+rank(17,10).
+rank(18,2).
+rank(19,3).
+rank(20,4).
+rank(21,4).
+rank(22,5).
+rank(23,5).
+rank(24,6).
+rank(25,6).
+rank(26,7).
+rank(27,7).
+rank(28,8).
+rank(29,8).
+rank(30,9).
+rank(31,9).
+rank(32,10).
+rank(33,10).
+rank(34,1).
+rank(35,2).
+rank(36,3).
+rank(37,3).
+rank(38,4).
+rank(39,4).
+rank(40,5).
+rank(41,5).
+rank(42,6).
+rank(43,6).
+rank(44,7).
+rank(45,7).
+rank(46,8).
+rank(47,8).
+rank(48,9).
+rank(49,9).
+rank(50,10).
+rank(51,10).
+prules(1..51).
