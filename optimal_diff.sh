@@ -72,9 +72,28 @@ then
   preferenceInput=$dir"pref/pref"$numOfAtoms"_4_"$split"_"$instanceNum".txt"
 fi
 
-
 #Storing computation start time
 MAIN_START=$(gdate +%s.%N)
+
+
+#checking if input data files exists or not
+if [ ! -f "$generatorInput" ]
+then
+    echo "GeneratorFileDoesNotExist" > temp/solution.txt
+    MAIN_END=$(gdate +%s.%N) #Storing computation end time
+    timeTaken=$(echo "$MAIN_END - $MAIN_START"|bc) #Finding actual computation time
+    echo "timeTaken= "$timeTaken
+    exit
+elif [ ! -f "$preferenceInput" ]
+then
+    echo "PreferenceFileDoesNotExist" > temp/solution.txt
+    MAIN_END=$(gdate +%s.%N) #Storing computation end time
+    timeTaken=$(echo "$MAIN_END - $MAIN_START"|bc) #Finding actual computation time
+    echo "timeTaken= "$timeTaken
+    exit
+fi
+
+
 
 #Generate outcome that is not worse and different from given outcome
 clingo $generatorInput generatorProgram.lp $preferenceInput $calculateSatisfatctionDegree $givenOutput $findNotWorseDiff > temp/tempAnswer.txt

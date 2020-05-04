@@ -209,7 +209,13 @@ do
 
 
     #variable "time" stores the timeTaken for computation
-    time=$(grep 'timeTaken' temp/time.txt|cut -d' ' -f2)
+    grep 'timeTaken' temp/time.txt > temp/timeTemp.txt
+    if [ ! -s "temp/timeTemp.txt" ]
+    then
+      time=$TIME_OUT
+    else
+      time=$(grep 'timeTaken' temp/time.txt|cut -d' ' -f2)
+    fi
     #echo "time: "$time
 
     #Checks whether computation timeout or not
