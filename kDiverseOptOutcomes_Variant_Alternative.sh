@@ -91,24 +91,6 @@ checkOptimality(){
 #Storing computation start time
 MAIN_START=$(gdate +%s.%N)
 
-
-#checking if input data files exists or not
-if [ ! -f "$generatorInput" ]
-then
-    echo "GeneratorFileDoesNotExist" > temp/solution.txt
-    MAIN_END=$(gdate +%s.%N) #Storing computation end time
-    timeTaken=$(echo "$MAIN_END - $MAIN_START"|bc) #Finding actual computation time
-    echo "timeTaken= "$timeTaken
-    exit
-elif [ ! -f "$preferenceInput" ]
-then
-    echo "PreferenceFileDoesNotExist" > temp/solution.txt
-    MAIN_END=$(gdate +%s.%N) #Storing computation end time
-    timeTaken=$(echo "$MAIN_END - $MAIN_START"|bc) #Finding actual computation time
-    echo "timeTaken= "$timeTaken
-    exit
-fi
-
 while :
 do
   if [ "$totalFailedOutcomesFound" -ge 500 ]
