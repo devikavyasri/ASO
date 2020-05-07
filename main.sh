@@ -19,8 +19,8 @@ printMenu(){
   echo "Fourth Argument - Problem      : 1 (optimal); 2 (diff-Optimal); 3 (sim/dissim); 4 (KDiverse) "
   echo "Fifth Argument - PreferenceSet : 1 (unranked) or 2 (ranked) or 3 (TwoLPTrees) 4(FourLPTrees)"
   echo "Sixth Argument - Type of LP Trees:
-                  if DataSet == 4: 0 (no split) or 1 (Split at root)
-                  if DataSet != 4: -1 "
+                  if PreferenceSet == 4: 0 (no split) or 1 (Split at root)
+                  if PreferenceSet != 4: -1 "
   echo "Seventh Argument - method (if Problem == 3 or 4):
                     if problem == 3 (sim/dissim): 1(StraightForward - SF)
                                                   2 (Alternative - Alt)
