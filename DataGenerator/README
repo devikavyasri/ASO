@@ -1,0 +1,159 @@
+Answer Set Optimization (ASO) program consists of one instance of generator
+and one instance preference program.
+We considered four sets of Preference programs:
+1: Unranked Preference program
+2: Ranked Preference Program
+3: TwoLPTrees Preference Program
+4: FourLPTrees Preference Program
+
+Usage:
+1.To generate Generator program, ranked Preference Program:
+"GenerateRules.java" program is used to generate Generator rules
+ Input: Four Arguments
+        1: numOfAtoms
+        2: multiplierToGeneratorProgram
+        3: multiplierToPreferenceProgram
+        4: InstanceNumber
+ Output: Creates file with rules in "gen", "pref_rank" folders
+
+Example:
+To generate rules with 60 atoms, 240 GeneratorRules, 180 PreferenceRules, instanceNumber=1
+First compile : javac GenerateRules.java
+To Execute    : java GenerateRules 60 4 3 1
+
+
+
+2.To generate Two LPTrees Preference Program:
+"LPTreesPrefRules.java" program is used to generate Generator rules
+ Input: Two Arguments
+        1: numOfAtoms
+        2: InstanceNumber
+ Output: Creates file with rules in "TwoLPTrees" folder
+
+Example:
+To generate rules with 60 atoms, instanceNumber=1
+First compile : javac LPTreesPrefRules.java
+To Execute    : java LPTreesPrefRules 60 1
+
+
+
+3.To generate Four LPTrees Preference Program:
+"FourLPTreesPreferences.java" program is used to generate preference rules
+representing four LPTrees of two types: 1. LPTrees with no split
+                                        2. LPTrees with just one split at root
+
+
+Input: Takes 4 Arguments
+        1: Number of atoms
+        2: Number of LPTrees
+        3: 0 or any positive number (0 for NoSplit; 1 for split at root;
+                                    other +ve numbers for split anywhere)
+        4: InstanceNumber (Any number) This is used to name file of preference rules
+
+Output: Creates files with rules in FourLPTrees folder
+
+To compile: javac FourLPTreesPreferences.java
+Eg1: java FourLPTreesPreferences 10 4 0 1
+10 Atoms, 4 trees, no split, instance is 1. So, creates file as pref_10_4_0_1.txt
+Eg2: java FourLPTreesPreferences 10 4 1 2
+10 Atoms, 4 trees, split at root, instance is 2. So, creates file as pref_10_4_1_2.txt
+Eg3: java FourLPTreesPreferences 10 4 2 4
+10 Atoms, 4 trees, split anywhere, instance is 4. So, creates file as pref_10_4_2_4.txt
+
+
+4.To generate Unranked Preference Program:
+In the experiments, we generate unranked Preferences from ranked preference
+just by removing ranks.
+
+"ConvertPrefRankedToPref.java" program is used to convert Ranked preference Rules
+to unranked preferenceRules.
+
+Input: one argument
+      1: Name of file containing preference Ranked Rules
+Output: Creates file with unranked Rules in "pref" folder.
+
+
+To compile: javac ConvertPrefRankedToPref.java
+Example:
+Execute   : java ConvertPrefRankedToPref pref_rank/pref60_180_1.txt
+
+
+
+
+
+
+Conversions:
+Generator and Preference rules are represented differently in new(Devi) and
+old(Ying) implementations.
+
+In old implementation, there will be three folders:
+gen: Files containing generator rules
+pref: Files containing all types of preference rules (Unranked, Ranked, TwoLPTrees)
+imp: Files containing ranks of preference rules (Ranked, TwoLPTrees)
+
+Below java programs are used to convert data from new format to old format:
+"ConvertNewToOldGenerator.java"
+"ConvertNewToOldImp.java"
+"ConvertNewToOldLPTreesPref.java"
+"ConvertNewToOldPrefRanked.java"
+
+
+
+1.Generator:
+"ConvertNewToOldGenerator.java" program is used to convert the format of
+New generator rules(Devi) to old generator rules(Ying)
+
+Input: One argument
+       1: GeneratorFileName in new format
+Output: Creates file with rules in "OldFormat/gen" folder
+
+To Compile: javac ConvertNewToOldGenerator.java
+Example:
+To Execute: java ConvertNewToOldGenerator gen/gen60_240_1.txt
+
+
+
+
+2.Ranked Preferences:
+"ConvertNewToOldPrefRanked.java" program is used to convert the format of
+New preference rules(Devi) to old preference rules(Ying).
+
+Input: One argument
+      1: NewPreferenceRulesFileName
+Output: Creates file with rules in "OldFormat/pref" folder
+
+
+To Compile: javac ConvertNewToOldPrefRanked.java
+Example
+To Execute: java ConvertNewToOldPrefRanked pref_rank/pref60_180_1.txt
+
+3.Ranks of Ranked Preferences:
+"ConvertNewToOldImp.java" program is used to generates ranks of
+ranked preference rules
+
+Input: Two Arguments
+       1: numOfAtoms
+       2: numOfPreferenceClauses
+Output: Creates file with rules in "OldFormat/imp" folder
+
+
+To Compile: javac ConvertNewToOldImp.java
+Example
+To Execute: java ConvertNewToOldImp 60 180
+
+
+
+
+4.LPTrees Preferences:
+"ConvertNewToOldLPTreesPref.java" program is used to convert the format of
+New LPTrees preference rules(Devi) to old LPTrees preference rules(Ying)
+
+Input: Two Arguments
+       1: NewPreferenceRulesFileName
+       2: numOfAtoms
+Output: Creates file with rules in "OldFormat/pref", "OldFormat/imp" folders
+
+
+To Compile: javac ConvertNewToOldLPTreesPref.java
+Example
+To Execute: java ConvertNewToOldLPTreesPref TwoLPTrees/pref60_2_1.txt 60
