@@ -4,16 +4,16 @@ programs. Answer Set Optimization consists of a generator program and set of pre
 
 
 Reference Paper for this software:
-On Optimal Solutions of Answer Set Optimization Problems by Ying Zhu, Miroslaw Truszczynski
+On Optimal Solutions of Answer Set Optimization Problems   by Ying Zhu, Miroslaw Truszczynski
 
 
 Implemented Iterative improvement method only. It solves five problems:
 1. Find one optimal outcome for ASO program --- optimal
 2. Given one optimal outcome, find a different optimal outcome --- diff-Optimal
-3. Given one optimal outcome, finding an optimal outcome which is close to given
-    outcome by given Hamming distance --- sim optimal
-4. Given one optimal outcome, finding an optimal outcome which is close from
-    given outcome by given Hamming distance --- dissim optimal
+3. Given one optimal outcome, find an optimal outcome which is close to given
+    outcome by given Hamming distance --- similar optimal
+4. Given one optimal outcome, find an optimal outcome which is far from
+    given outcome by given Hamming distance --- dissimilar optimal
 5. Find set of diverse optimal outcomes (three outcomes) -- KDiverse
 
 
@@ -42,7 +42,7 @@ In experiment, two different sets of four LP Trees are generated.
 (b) Four LP Trees with one split, which is located at the root node.
 
 
-Some datasets are in "data" folder. To generate new generator and preference programs,
+Files containing generator rules and preference rules are in "data" folder. To generate new generator and preference programs,
 go to "DataGenerator" folder and see README.
 
 
@@ -63,9 +63,9 @@ javac *.java
 USAGE
 Eg: sh main.sh 60 4 3 3 2 -1 1 0.2 1
 
-Input: Takes atleast 5 arguments and atmost 9 arguments.
+Input: Takes at least 5 arguments and at most 9 arguments.
 
-First Argument                 : Number Of Atoms (Atoms shoud be >=3)
+First Argument                 : Number Of Atoms (Atoms should be >=3)
 Second Argument                : Multiplier for generator Clauses
 Third Argument                 : Multiplier for preference Clauses (Enter 0 for LP trees)
 Fourth Argument - Problem      : 1 (optimal); 2 (diff-Optimal); 3 (sim/dissim); 4 (KDiverse)
@@ -76,20 +76,20 @@ Sixth Argument - Type of LP Trees:
   if PreferenceSet != 4: -1
 
 Seventh Argument - method (if Problem == 3 or 4):
-  if problem == 3 (sim/dissim): 1(StraightForward - SF)
+  if problem == 3 (sim/dissim): 1 (StraightForward - SF)
                                 2 (Alternative - Alt)
-                                3(VariantAlternative - Alt_V) \n
-  if problem == 4 (KDiverse)  : 1(StraightForward_SF)
+                                3 (VariantAlternative - Alt_V) \n
+  if problem == 4 (KDiverse)  : 1 (StraightForward_SF)
                                 2 (StraightForward_Alt)
-                                3(StraightForward_VAlt)
-                                4(Alternative)
-                                5(VariantAlternative)
+                                3 (StraightForward_VAlt)
+                                4 (Alternative)
+                                5 (VariantAlternative)
 
 Eighth Argument - distance (if Problem == 3 or 4): 0 to 1
 Hamming Distance = distance*NumOfAtoms.
 Eg: If NumOfAtoms=10, distance = 0.2 then Hamming Distance = 2.
 
-Ninth Argument - Similar/dissimialar (if Problem == 3): 1(similar) or 2 (dissimilar)\n"
+Ninth Argument - Similar/dissimilar (if Problem == 3): 1(similar) or 2 (dissimilar)\n"
 
 
 
