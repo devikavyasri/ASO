@@ -6,7 +6,10 @@ We considered four sets of Preference programs:
 3: TwoLPTrees Preference Program
 4: FourLPTrees Preference Program
 
-Usage:
+Generate required data files using below commands. 
+After generating files, copy the obtained files to correct folders in "data" folder.
+
+Usage: 
 1.To generate Generator program, ranked Preference Program:
 "GenerateRules.java" program is used to generate Generator rules
  Input: Four Arguments
