@@ -78,7 +78,7 @@ Sixth Argument - Type of LP Trees:
 Seventh Argument - method (if Problem == 3 or 4):
   if problem == 3 (sim/dissim): 1 (StraightForward - SF)
                                 2 (Alternative - Alt)
-                                3 (VariantAlternative - Alt_V) \n
+                                3 (VariantAlternative - Alt_V) 
   if problem == 4 (KDiverse)  : 1 (StraightForward_SF)
                                 2 (StraightForward_Alt)
                                 3 (StraightForward_VAlt)
