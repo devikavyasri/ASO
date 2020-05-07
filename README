@@ -1,0 +1,120 @@
+ASO: Answer Set Optimization
+Answer Set Optimization is an approach for handling preferences in the formalism of logic
+programs. Answer Set Optimization consists of a generator program and set of preference rules.
+
+
+Reference Paper for this software:
+On Optimal Solutions of Answer Set Optimization Problems by Ying Zhu, Miroslaw Truszczynski
+
+
+Implemented Iterative improvement method only. It solves five problems:
+1. Find one optimal outcome for ASO program --- optimal
+2. Given one optimal outcome, find a different optimal outcome --- diff-Optimal
+3. Given one optimal outcome, finding an optimal outcome which is close to given
+    outcome by given Hamming distance --- sim optimal
+4. Given one optimal outcome, finding an optimal outcome which is close from
+    given outcome by given Hamming distance --- dissim optimal
+5. Find set of diverse optimal outcomes (three outcomes) -- KDiverse
+
+
+DataSets:
+Generator: Randomly generated 3-CNF formulas with n atoms and 4n clauses
+
+Preference rules:
+1. Unranked preference rules:
+Randomly generating 3n preference rules without rank (n being as before the number of atoms)
+
+2. Ranked preference rules:
+Randomly generating 3n rules with two ranks, half of the rules having rank 1
+and half of the rules having rank 2
+
+3. Two LPTrees Preference rules:
+Extracting preference rules from two conditional preference LP trees. This results
+in a ranked preference program with as many ranks as there are levels in the tree.
+The two LP trees considered are equally important.
+
+4. Four LPTrees Preference Rules:
+Extracting preference rules from four LP trees with an extra condition that
+first LPTree is preferred to other three LP Trees, second LP Tree is preferred to
+third and fourth LP Trees and third LP tree is preferred to fourth LPTree.
+In experiment, two different sets of four LP Trees are generated.
+(a) Four LP Trees with no split
+(b) Four LP Trees with one split, which is located at the root node.
+
+
+Some datasets are in "data" folder. To generate new generator and preference programs,
+go to "DataGenerator" folder and see README.
+
+
+
+REQUIREMENTS:
+Programs are written using Java, AnswerSetProgramming, Shell Scripting.
+Required softwares:
+clingo (ASP Solver), Java Runtime Environment, Unix Shell Program
+
+This software is tested in macOS.
+
+
+After downloading the software, go to the folder ASO in terminal.
+First compile all Java programs using below command:
+javac *.java
+
+
+USAGE
+Eg: sh main.sh 60 4 3 3 2 -1 1 0.2 1
+
+Input: Takes atleast 5 arguments and atmost 9 arguments.
+
+First Argument                 : Number Of Atoms (Atoms shoud be >=3)
+Second Argument                : Multiplier for generator Clauses
+Third Argument                 : Multiplier for preference Clauses (Enter 0 for LP trees)
+Fourth Argument - Problem      : 1 (optimal); 2 (diff-Optimal); 3 (sim/dissim); 4 (KDiverse)
+Fifth Argument - PreferenceSet : 1 (unranked) or 2 (ranked) or 3 (TwoLPTrees) 4(FourLPTrees)
+
+Sixth Argument - Type of LP Trees:
+  if PreferenceSet == 4: 0 (no split) or 1 (Split at root)
+  if PreferenceSet != 4: -1
+
+Seventh Argument - method (if Problem == 3 or 4):
+  if problem == 3 (sim/dissim): 1(StraightForward - SF)
+                                2 (Alternative - Alt)
+                                3(VariantAlternative - Alt_V) \n
+  if problem == 4 (KDiverse)  : 1(StraightForward_SF)
+                                2 (StraightForward_Alt)
+                                3(StraightForward_VAlt)
+                                4(Alternative)
+                                5(VariantAlternative)
+
+Eighth Argument - distance (if Problem == 3 or 4): 0 to 1
+Hamming Distance = distance*NumOfAtoms.
+Eg: If NumOfAtoms=10, distance = 0.2 then Hamming Distance = 2.
+
+Ninth Argument - Similar/dissimialar (if Problem == 3): 1(similar) or 2 (dissimilar)\n"
+
+
+
+Example:
+1.For numberOfAtoms=60 (i.e. n=60), 4n generator clauses, 3n preference clauses (unranked),
+to find an optimal outcome, run below command:
+sh main.sh 60 4 3 1 1
+
+2.For numberOfAtoms=120 (i.e. n=120), 4.15n generator clauses, 3n preference clauses (ranked),
+to find an optimal outcome, run below command:
+sh main.sh 120 4.15 3 1 2
+
+3.For numberOfAtoms=60 (i.e. n=60), 4.2n generator clauses, 3n preference clauses (FourLPtrees with no split),
+to find an optimal outcome, run below command:
+sh main.sh 60 4.2 3 1 4 0
+
+4.For numberOfAtoms=60 (i.e. n=60), 4n generator clauses, 3n preference clauses (LPTrees),
+to find a different optimal outcome, run below command:
+sh main.sh 60 4 3 2 3
+
+
+5.For numberOfAtoms=60 (i.e. n=60), 4n generator clauses, 3n preference clauses (ranked),
+to find a similar optimal outcome with distance 0.2n using SF method, run below command:
+sh main.sh 60 4 3 3 2 -1 1 0.2 1
+
+6.For numberOfAtoms=60 (i.e. n=60), 4n generator clauses, 3n preference clauses (unranked),
+to find a dissimilar optimal outcome with distance 0.6n using Alt method, run below command:
+sh main.sh 60 4 3 3 1 -1 2 0.6 2
